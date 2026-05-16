@@ -15,18 +15,44 @@ const socketHandler = require('./socket/socketHandler');
 const plagiarismRoutes = require('./routes/plagiarismRoutes');
 const submissionRoutes = require('./routes/submissionRoutes');
 
+// const app = express();
+// const server = http.createServer(app);
+
+// const io = new Server(server, {
+//   cors: {
+//     origin: 'http://localhost:5173',
+
+//     methods: ['GET', 'POST']
+//   }
+// });
+
+// // Middleware
+// app.use(cors());
+// app.use(express.json());
+
 const app = express();
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173',
-    methods: ['GET', 'POST']
+    origin: [
+      'http://localhost:5173',
+      'https://collabcode-ai.pages.dev'
+    ],
+    methods: ['GET', 'POST'],
+    credentials: true
   }
 });
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://collabcode-ai.pages.dev'
+  ],
+  credentials: true
+}));
+
 app.use(express.json());
 
 // Health check
