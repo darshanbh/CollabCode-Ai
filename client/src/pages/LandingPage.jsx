@@ -81,11 +81,6 @@ export default function LandingPage() {
               and secure exam tools — all in one powerful platform.
             </p>
 
-            <div style={styles.heroButtons}>
-              <Button size="lg" onClick={() => navigate('/register')}>Start Coding Free →</Button>
-              <Button variant="ghost" size="lg">▶ Watch Demo</Button>
-            </div>
-
             <div style={styles.socialProof}>
               <div style={styles.avatarGroup}>
                 {[1,2,3,4,5].map(i => (
