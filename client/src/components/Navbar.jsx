@@ -18,6 +18,19 @@ function Navbar() {
   const shouldHide = hideOn.some(path => location.pathname.includes(path));
   if (shouldHide) return null;
 
+  const handleNavClick = (id) => {
+    if (location.pathname !== '/') {
+      navigate(`/${id ? '#' + id : ''}`);
+    } else {
+      if (id) {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  };
+
+
   return (
     <nav style={styles.navbar}>
 
@@ -29,9 +42,9 @@ function Navbar() {
 
       {/* Center Links */}
       <div style={styles.links}>
-        <span style={styles.link} onClick={() => navigate('/')}>Home</span>
-        <span style={styles.link} onClick={() => navigate('/')}>Features</span>
-        <span style={styles.link} onClick={() => navigate('/')}>About</span>
+        <span style={styles.link} onClick={() => handleNavClick('')}>Home</span>
+        <span style={styles.link} onClick={() => handleNavClick('features')}>Features</span>
+        <span style={styles.link} onClick={() => handleNavClick('about')}>About</span>
         {token && (
           <span style={styles.link} onClick={() => navigate('/dashboard')}>Dashboard</span>
         )}

@@ -15,10 +15,6 @@ export default function TopNav({ title, onMenuClick }) {
       </div>
 
       <div style={styles.right}>
-        <div style={styles.notification}>
-          <span>🔔</span>
-          <span style={styles.badge}>3</span>
-        </div>
         <div style={styles.profile}>
           <span style={styles.greeting}>Hi, {user?.name?.split(' ')[0] || 'User'}</span>
           <Avatar name={user?.name || 'User'} size={36} />

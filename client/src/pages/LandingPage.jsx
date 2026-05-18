@@ -14,6 +14,14 @@ export default function LandingPage() {
     const unsubscribe = scrollY.on("change", (latest) => {
       setScrolled(latest > 50);
     });
+    
+    if (window.location.hash) {
+      const id = window.location.hash.substring(1);
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
     return () => unsubscribe();
   }, [scrollY]);
 
@@ -81,14 +89,7 @@ export default function LandingPage() {
               and secure exam tools — all in one powerful platform.
             </p>
 
-            <div style={styles.socialProof}>
-              <div style={styles.avatarGroup}>
-                {[1,2,3,4,5].map(i => (
-                  <div key={i} style={{...styles.proofAvatar, zIndex: 10-i, backgroundImage: `url(https://i.pravatar.cc/100?img=${i+10})`}} />
-                ))}
-              </div>
-              <span style={styles.proofText}>Trusted by 200+ developers and educators</span>
-            </div>
+
           </motion.div>
         </section>
 
@@ -108,7 +109,7 @@ export default function LandingPage() {
         </motion.section>
 
         {/* SECTION D: FEATURES GRID */}
-        <section style={styles.featuresSection}>
+        <section id="features" style={styles.featuresSection}>
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp}>
             <h2 style={styles.sectionTitle}>Everything Your Team Needs</h2>
             <p style={styles.sectionSubtitle}>From live coding to AI assistance and exam proctoring</p>
@@ -175,7 +176,7 @@ export default function LandingPage() {
         </section>
 
         {/* SECTION G: FOOTER */}
-        <footer style={styles.footer}>
+        <footer id="about" style={styles.footer}>
           <div style={styles.footerGrid}>
             <div>
               <div style={styles.footerLogo}>⬡ CollabCode AI</div>
