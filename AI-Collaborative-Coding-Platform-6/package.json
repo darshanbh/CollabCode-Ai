@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "animejs": "^4.3.6",
+    "framer-motion": "^12.38.0",
+    "puppeteer": "^25.0.2",
+    "react-parallax-tilt": "^1.7.324",
+    "react-router-dom": "^7.14.2"
+  }
+}
